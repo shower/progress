@@ -43,6 +43,10 @@ modules.define('plugin.Progress', [
                 this._setupListeners();
             }
 
+            this._element.setAttribute('role', 'progressbar');
+            this._element.setAttribute('aria-valuemin', '0');
+            this._element.setAttribute('aria-valuemax', '100');
+
             this.updateProgress();
         },
 
@@ -53,9 +57,12 @@ modules.define('plugin.Progress', [
 
         updateProgress: function () {
             var slidesCount = this._shower.getSlidesCount(),
-                currentSlideNumber = this._shower.player.getCurrentSlideIndex();
+                currentSlideNumber = this._shower.player.getCurrentSlideIndex(),
+                currentProgressValue = (100 / (slidesCount - 1)) * currentSlideNumber.toFixed(2);
 
-            this._element.style.width = (100 / (slidesCount - 1)) * currentSlideNumber.toFixed(2) + '%';
+            this._element.style.width = currentProgressValue + '%';
+            this._element.setAttribute('aria-valuenow', currentProgressValue);
+            this._element.setAttribute('aria-valuetext', 'Slideshow Progress: ' + currentProgressValue + '%');
         },
 
         _setupListeners: function () {
