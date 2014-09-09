@@ -2,12 +2,12 @@
   "name": "shower-progress",
   "version": "0.0.1",
   "license": "MIT",
-  "main": "plugin.Progress.js",
+  "main": "shower-progress.js",
   "ignore": [
     "*",
     "!License.md",
     "!Readme.md",
-    "!plugin.Progress.js",
+    "!shower-progress.js",
     "!bower.json"
   ],
   "keywords": [

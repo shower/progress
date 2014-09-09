@@ -1,15 +1,8 @@
 /**
  * @fileOverview
  * Progress plugin for shower.
- *
- * @example
- * modules.require(['shower', 'plugin.Progress'], function (shower, Progress) {
- *     shower.ready(function () {
- *          var progress = new Progress(shower);
- *     });
- * });
  */
-modules.define('plugin.Progress', [
+modules.define('shower-progress', [
     'util.extend'
 ], function (provide, extend) {
 
@@ -86,4 +79,8 @@ modules.define('plugin.Progress', [
     });
 
     provide(Progress);
+});
+
+modules.require(['shower'], function (shower) {
+    shower.plugins.add('shower-progress');
 });
