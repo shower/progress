@@ -22,8 +22,6 @@ modules.define('shower-progress', [
 
         this._element = null;
         this._elementSelector = options.selector || '.shower__progress';
-
-        this.init();
     }
 
     extend(Progress.prototype, /** @lends plugin.Progress.prototype */{
