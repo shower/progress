@@ -32,13 +32,13 @@ modules.define('shower-progress', [
 
             if (this._element) {
                 this._setupListeners();
+
+                this._element.setAttribute('role', 'progressbar');
+                this._element.setAttribute('aria-valuemin', '0');
+                this._element.setAttribute('aria-valuemax', '100');
+
+                this.updateProgress();
             }
-
-            this._element.setAttribute('role', 'progressbar');
-            this._element.setAttribute('aria-valuemin', '0');
-            this._element.setAttribute('aria-valuemax', '100');
-
-            this.updateProgress();
         },
 
         destroy: function () {
@@ -51,9 +51,11 @@ modules.define('shower-progress', [
                 currentSlideNumber = this._shower.player.getCurrentSlideIndex(),
                 currentProgressValue = (100 / (slidesCount - 1)) * currentSlideNumber.toFixed(2);
 
-            this._element.style.width = currentProgressValue + '%';
-            this._element.setAttribute('aria-valuenow', currentProgressValue);
-            this._element.setAttribute('aria-valuetext', 'Slideshow Progress: ' + currentProgressValue + '%');
+            if (this._element) {
+                this._element.style.width = currentProgressValue + '%';
+                this._element.setAttribute('aria-valuenow', currentProgressValue);
+                this._element.setAttribute('aria-valuetext', 'Slideshow Progress: ' + currentProgressValue + '%');
+            }
         },
 
         _setupListeners: function () {
@@ -67,8 +69,12 @@ modules.define('shower-progress', [
         },
 
         _clearListeners: function () {
-            this._showerListeners.offAll();
-            this._playerListeners.offAll();
+            if (this._showerListeners) {
+                this._showerListeners.offAll();
+            }
+            if (this._playerListeners) {
+                this._playerListeners.offAll();
+            }
         },
 
         _onSlideChange: function () {
