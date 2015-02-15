@@ -49,12 +49,12 @@ modules.define('shower-progress', [
         updateProgress: function () {
             var slidesCount = this._shower.getSlidesCount(),
                 currentSlideNumber = this._shower.player.getCurrentSlideIndex(),
-                currentProgressValue = (100 / (slidesCount - 1)) * currentSlideNumber.toFixed(2);
+                currentProgressValue = (100 / (slidesCount - 1)) * currentSlideNumber;
 
             if (this._element) {
-                this._element.style.width = currentProgressValue + '%';
-                this._element.setAttribute('aria-valuenow', currentProgressValue);
-                this._element.setAttribute('aria-valuetext', 'Slideshow Progress: ' + currentProgressValue + '%');
+                this._element.style.width = currentProgressValue.toFixed(2) + '%';
+                this._element.setAttribute('aria-valuenow', currentProgressValue.toFixed());
+                this._element.setAttribute('aria-valuetext', 'Slideshow Progress: ' + currentProgressValue.toFixed() + '%');
             }
         },
 
