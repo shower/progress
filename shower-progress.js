@@ -12,7 +12,7 @@ modules.define('shower-progress', [
      * @name plugin.Progress
      * @param {Shower} shower
      * @param {Object} [options] Plugin options.
-     * @param {String} [options.selector = '.shower__progress']
+     * @param {String} [options.selector = '.progress']
      * @constructor
      */
     function Progress (shower, options) {
@@ -21,7 +21,7 @@ modules.define('shower-progress', [
         this._playerListeners = null;
 
         this._element = null;
-        this._elementSelector = options.selector || '.shower__progress';
+        this._elementSelector = options.selector || '.progress';
     }
 
     extend(Progress.prototype, /** @lends plugin.Progress.prototype */{
