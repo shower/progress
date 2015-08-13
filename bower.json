@@ -1,6 +1,6 @@
 {
   "name": "shower-progress",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "license": "MIT",
   "main": "shower-progress.js",
   "ignore": [
