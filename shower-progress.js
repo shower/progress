@@ -22,24 +22,22 @@ modules.define('shower-progress', [
 
         this._element = null;
         this._elementSelector = options.selector || '.progress';
+
+        var showerContainerElement = this._shower.container.getElement();
+        this._element = showerContainerElement.querySelector(this._elementSelector);
+
+        if (this._element) {
+            this._setupListeners();
+
+            this._element.setAttribute('role', 'progressbar');
+            this._element.setAttribute('aria-valuemin', '0');
+            this._element.setAttribute('aria-valuemax', '100');
+
+            this.updateProgress();
+        }
     }
 
     extend(Progress.prototype, /** @lends plugin.Progress.prototype */{
-
-        init: function () {
-            var showerContainerElement = this._shower.container.getElement();
-            this._element = showerContainerElement.querySelector(this._elementSelector);
-
-            if (this._element) {
-                this._setupListeners();
-
-                this._element.setAttribute('role', 'progressbar');
-                this._element.setAttribute('aria-valuemin', '0');
-                this._element.setAttribute('aria-valuemax', '100');
-
-                this.updateProgress();
-            }
-        },
 
         destroy: function () {
             this._clearListeners();
