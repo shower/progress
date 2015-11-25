@@ -2,7 +2,7 @@
  * @fileOverview
  * Progress plugin for shower.
  */
-modules.define('shower-progress', [
+shower.modules.define('shower-progress', [
     'util.extend'
 ], function (provide, extend) {
 
@@ -83,6 +83,6 @@ modules.define('shower-progress', [
     provide(Progress);
 });
 
-modules.require(['shower'], function (shower) {
-    shower.plugins.add('shower-progress');
+shower.modules.require(['shower'], function (sh) {
+    sh.plugins.add('shower-progress');
 });
